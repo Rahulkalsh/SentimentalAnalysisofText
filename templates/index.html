@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Classifier</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("https://t3.ftcdn.net/jpg/01/70/28/92/360_F_170289223_KNx1FpHz8r5ody9XZq5kMOfNDxsZphLz.jpg");
+        background-size: cover; /* Ensures the image covers the entire background */
+        background-position: center center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents repetition of the image */
+        color: white;
+        height: 100vh; /* Ensures the background covers the full height of the viewport */
+        display: flex;
+        justify-content: flex-start; /* Aligns the container to the left */
+        align-items: center;
+        padding-left: 50px; /* Adds space from the left */
+      }
+      .container {
+        width: 40%;
+        background: rgba(0, 0, 0, 0); /* Semi-transparent background */
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+      }
+      h1 {
+        text-align: center;
+        color: #C0C0C0;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      textarea {
+        resize: none;
+        height: 100px;
+        margin-bottom: 20px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: #C0C0C0;
+        color: #333;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          width: 60%; /* Adjust width for smaller screens */
+          padding: 15px;
+        }
+        h1 {
+          font-size: 1.5rem; /* Adjust font size */
+        }
+        textarea {
+          font-size: 14px; /* Adjust font size for textarea */
+        }
+        button {
+          font-size: 14px; /* Adjust button font size */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          width: 80%; /* Adjust width for very small screens */
+          padding: 10px;
+        }
+        h1 {
+          font-size: 1.3rem; /* Adjust font size */
+        }
+        textarea {
+          font-size: 13px; /* Adjust font size for textarea */
+          height: 80px; /* Adjust height of the textarea */
+        }
+        button {
+          font-size: 14px; /* Adjust button font size */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Understand Your Words</h1>
+      <form method="POST">
+        <textarea
+          name="message"
+          placeholder="Enter your message here..."
+        ></textarea>
+        <button type="submit">Predict</button>
+      </form>
+      {% if result is not none %}
+      <div class="result">
+        {% if result == "empty" %}
+          <p style="color: red">Please enter some text.</p>
+        {% elif result == 1 %}
+          <p style="color: green">Positive</p>
+        {% elif result == 0 %}
+          <p style="color: white">Neutral</p>
+        {% else %}
+          <p style="color: red">Negative</p>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
