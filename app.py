@@ -12,7 +12,7 @@ nltk.download('punkt', quiet=True)
 nltk.download('stopwords', quiet=True)
 
 # Initialize Flask app
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 app.secret_key = 'your_secret_key_here'  # Necessary for session to work
 
 # Load pre-trained model and vectorizer
@@ -68,7 +68,3 @@ def index():
     session.pop('result', None)
     
     return render_template("index.html", result=result)
-
-# Run the Flask app
-if __name__ == "__main__":
-    app.run()
