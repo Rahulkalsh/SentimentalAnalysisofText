@@ -10,7 +10,7 @@ import os
 # Download necessary NLTK data (Only required the first time)
 nltk.download('punkt', quiet=True)
 nltk.download('stopwords', quiet=True)
-
+nltk.download('punkt_tab', quiet=True)
 # Initialize Flask app
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'your_secret_key_here'  # Necessary for session to work
